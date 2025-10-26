@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lavado de autos</title>
+    <style>
+      .form-section {
+        display: none;
+        padding: 10px;
+        border: 1px solid #ddd;
+        margin: 10px 0;
+      }
+
+      .form-section:first-of-type {
+        display: block;
+      }
+
+      .form-section label {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .form-section input, .form-section select, .form-section button {
+        margin-top: 5px;
+        padding: 6px;
+        width: 100%;
+        max-width: 300px;
+        box-sizing: border-box;
+      }
+
+      .form-section button {
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        margin-top: 20px;
+      }
+
+      .form-section button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Section for User Registration -->
+    <section class="form-section user-registration active" id="section-user-registration">
+      <h2>Registro de Usuario</h2>
+      <form id="form-user-registration">
+        <label for="user-id">Número de identificación:</label>
+        <input type="number" id="user-id" name="user-id" required pattern="\d+" inputmode="numeric" min="1" step="1">
+
+        <label for="user-name">Nombre:</label>
+        <input type="text" id="user-name" name="user-name" required pattern="[A-Za-zÑñÁÉÍÓÚáéíóú\s]+" title="Only letters and spaces allowed">
+
+        <label for="user-phone">Teléfono:</label>
+        <input type="tel" id="user-phone" name="user-phone" required pattern="^\+?\d{7,15}$" title="Enter a valid phone number">
+
+        <label for="user-email">Correo:</label>
+        <input type="email" id="user-email" name="user-email" required>
+
+        <button type="submit">Siguiente</button>
+      </form>
+    </section>
+
+    <!-- Section for Vehicle Registration -->
+    <section class="form-section vehicle-registration" id="section-vehicle-registration">
+      <h2>Registro de Vehículo</h2>
+      <form id="form-vehicle-registration">
+        <label for="vehicle-plate">Placa del vehículo:</label>
+        <input type="text" id="vehicle-plate" name="vehicle-plate" required pattern="[A-Za-z0-9\-]{1,10}" title="Alphanumeric and dash, max 10 characters">
+    <!-- Section for Invoice Display -->
+    <section class="form-section invoice-display" id="section-invoice-display">
+      <h1>Lavado de autos David</h1>
+      <h2>Factura de Servicio</h2>
+      <ul>
+        <li>Lavado básico - $10.00</li>
+        <li>Encerado - $15.00</li>
+        <li>Lavado completo - $20.00</li>
+      </ul>
+      <h3>Subtotal: $45.00</h3>
+      <h2>Total: $45.00</h2>
+    </section>
+
+        <label for="vehicle-type">Tipo de vehículo:</label>
+        <input type="text" id="vehicle-type" name="vehicle-type" placeholder="Camioneta, todo terreno, moto, etc" required pattern="[A-Za-zÑñÁÉÍÓÚáéíóú\s]+" title="Only letters and spaces allowed">
+
+        <label for="vehicle-brand">Marca del vehículo:</label>
+        <input type="text" id="vehicle-brand" name="vehicle-brand" required pattern="[A-Za-zÑñÁÉÍÓÚáéíóú\s]+" title="Only letters and spaces allowed">
+
+        <button type="submit">Siguiente</button>
+      </form>
+    </section>
+
+    <!-- Section for Service Selection -->
+    <section class="form-section service-selection" id="section-service-selection">
+      <h2>Seleccionar Servicio</h2>
+      <form id="form-service-selection">
+        <label for="service-type">Tipo de servicio:</label>
+        <select id="service-type" name="service-type" required>
+          <option value="1">Lavado básico</option>
+          <option value="2">Lavado completo</option>
+          <option value="3">Encerado</option>
+        </select>
+
+        <label for="service-name">Nombre del servicio:</label>
+        <input type="text" id="service-name" name="service-name" required pattern="[A-Za-zÑñÁÉÍÓÚáéíóú\s]+" title="Only letters and spaces allowed">
+
+        <label for="service-description">Descripción:</label>
+        <textarea id="service-description" name="service-description" rows="3" required pattern=".{10,}" title="Minimum 10 characters"></textarea>
+
+        <button type="submit">Siguiente</button>
+      </form>
+    </section>
+
+    <!-- Section for Employee Selection -->
+    <section class="form-section employee-selection" id="section-employee-selection">
+      <h2>Seleccionar Empleado</h2>
+      <form id="form-employee-selection">
+        <label for="employee-select">Empleado:</label>
+        <select id="employee-select" name="employee-select" required></select>
+        <button type="submit">Siguiente</button>
+      </form>
+    </section>
+
+    <!-- Section for Service Execution Options -->
+    <section class="form-section service-execution" id="section-service-execution">
+      <h2>Opciones de Servicio</h2>
+      <form id="form-service-execution">
+        <label for="service-action">Seleccione una opción:</label>
+        <select id="service-action" name="service-action" required>
+          <option value="1">Agregar un nuevo servicio</option>
+          <option value="2">Añadir un nuevo empleado</option>
+          <option value="3">Realizar servicio</option>
+        </select>
+
+        <button type="submit">Confirmar</button>
+      </form>
+    </section>
+  </body>
+  <script type="module" src="./scripts/main.js"></script>
+</html>
