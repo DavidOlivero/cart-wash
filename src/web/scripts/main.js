@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentSectionIndex = 3
       showSection(currentSectionIndex)
     }
+    else showBilling()
   }
 
   function loadEmployees() {
@@ -130,6 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
     serviceOrder.assignNewEmployee(newEmployee)
     currentSectionIndex = 3
     showSection(currentSectionIndex)
+  }
+
+  function showBilling() {
+    const billingSection = document.querySelector('#section-invoice-display')
+    showSection(10)
+    billingSection.style.display = 'block'
   }
 });
 
