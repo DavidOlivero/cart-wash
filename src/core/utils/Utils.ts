@@ -1,5 +1,5 @@
-import * as readline from 'node:readline/promises';
-import { stdin, stdout } from 'node:process';
+import * as readline from 'readline/promises';
+import { stdin, stdout } from 'process';
 import { DataTypes } from '../constants/enums/data-types-enum';
 
 
