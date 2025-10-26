@@ -30,6 +30,10 @@ export class ServiceOrder implements IServiceOrder {
     this._serviceOrderProperties.state = newState;
   }
 
+  public getServices(): Service[] {
+    return this._serviceOrderProperties.services;
+  }
+
   public getTotalPrice(): number {
     let total: number = Numbers.ZERO;
     this._serviceOrderProperties.services.forEach((service) => {

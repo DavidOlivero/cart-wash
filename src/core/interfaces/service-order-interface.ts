@@ -7,4 +7,5 @@ export interface IServiceOrder {
   addNewService(service: Service): void;
   changeState(newState: ServiceOrderState): void;
   getTotalPrice(): number;
+  getServices(): Service[];
 }

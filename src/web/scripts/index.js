@@ -1,3 +1,4 @@
+// src/entities/employee/employee.ts
 export class Employee {
   _id;
   _name;
@@ -69,6 +70,9 @@ export class ServiceOrder {
   }
   changeState(newState) {
     this._serviceOrderProperties.state = newState;
+  }
+  getServices() {
+    return this._serviceOrderProperties.services;
   }
   getTotalPrice() {
     let total = 0 /* ZERO */;
@@ -249,4 +253,3 @@ export class View {
     this._serviceOrder.assignNewEmployee(employee);
   }
 }
-

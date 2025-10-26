@@ -1,4 +1,4 @@
-import { BasicWashing, Customer, Employee, EMPLOYEES_LIST, FullWashing, ServiceOrder, Vehicle, Wax } from "./index.js";
+import { BasicWashing, Customer, EMPLOYEES_LIST, FullWashing, ServiceOrder, Vehicle, Wax } from "./index.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   const formSections = document.querySelectorAll('.form-section')
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function assignEmployeeAndCreateServiceOrder(data) {
     let employeeOption
     for (const employee of EMPLOYEES_LIST) {
-      if (employee._name === data['employee-select']) {
+      if (employee.id === data['employee-select']) {
         employeeOption = employee
         break;
       }
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentSectionIndex = 2
       showSection(currentSectionIndex)
     }
-    if (option === '2') {
+    else if (option === '2') {
       currentSectionIndex = 3
       showSection(currentSectionIndex)
     }
@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     EMPLOYEES_LIST.forEach((employee) => {
       const employeeRegister = document.createElement('option')
-      employeeRegister.value = employee._name
-      employeeRegister.text = employee._name
+      employeeRegister.value = employee.id
+      employeeRegister.text = employee.name
       employeeSelection.appendChild(employeeRegister)
     })
   }
@@ -135,8 +135,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showBilling() {
     const billingSection = document.querySelector('#section-invoice-display')
+    const ulElement = billingSection.querySelector('ul')
+    const subTotalElement = billingSection.querySelector('h3 span')
+    const totalElement = billingSection.querySelector('h2 span')
+    const services = serviceOrder.getServices()
     showSection(10)
     billingSection.style.display = 'block'
+
+    services.forEach((service) => {
+      const liElement = document.createElement('li')
+      const price =
+        liElement.textContent = `${service.name} - ${converNumberToCurrecy(service.getPrice())}`
+      ulElement.appendChild(liElement)
+    })
+
+    subTotalElement.textContent = converNumberToCurrecy(serviceOrder.getTotalPrice())
+    totalElement.textContent = converNumberToCurrecy(serviceOrder.getTotalPrice())
+  }
+
+  function converNumberToCurrecy(price) {
+    return new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP'
+    }).format(price).replace('COP ', '$')
   }
 });
 
